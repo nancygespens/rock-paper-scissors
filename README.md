@@ -1,6 +1,9 @@
 # Rock Paper Scissors Game
 
-<img width="1682" alt="rock-paper-scissors" src="https://github.com/user-attachments/assets/51189074-e781-4d52-9940-3d4b226f220b">
+[![Demo](https://github.com/user-attachments/assets/51189074-e781-4d52-9940-3d4b226f220b)](https://reliable-sawine-bbb75b.netlify.app/)
+
+> Click the image to view the demo. The link will open in the current tab (press `Ctrl + Click` or `Cmd + Click` to open in a new tab).
+
 
 ## Description
 
