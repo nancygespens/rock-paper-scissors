@@ -1,3 +1,4 @@
+/* General Styling */
 body {
     text-align: center;
     margin: 50px auto;
@@ -7,19 +8,23 @@ body {
     color: #e0e1dd;
 }
 
+/* Header and Section Styling */
 #top, #mid {
-    margin: 50px 0 50px 0;
+    margin: 50px 0;
 }
 
+/* Divider Styling */
 hr {
-   border: 1px solid #1b263b;
-   margin: 30px 0;
+    border: 1px solid #1b263b;
+    margin: 30px 0;
 }
 
+/* Paragraph Styling */
 p {
- color: #778da9;
+    color: #778da9;
 }
 
+/* Score Display */
 #score {
     display: flex;
     justify-content: space-around;
@@ -30,13 +35,20 @@ p {
     font-weight: bold;
 }
 
-img {
-    height: 20px;
-    padding: 0;
-    margin: 0;
-    width: auto;
+/* Result Classes */
+.win {
+    color: #606c38; /* Green for Win */
 }
 
+.lose {
+    color: #c1121f; /* Red for Loss */
+}
+
+.tie {
+    color: #778da9; /* Neutral for Tie */
+}
+
+/* Button Styling */
 button {
     height: 50px;
     width: 110px;
@@ -45,12 +57,14 @@ button {
     background-color: #1b263b;
     color: #e0e1dd;
     font-weight: bold;
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #778da9;
+    background-color: #506784; /* Adjusted for better readability */
 }
 
+/* Button Grouping */
 #buttons {
     display: flex;
     justify-content: space-between;
@@ -58,4 +72,10 @@ button:hover {
 
 #newGameButton {
     width: 365px;
+}
+
+/* Image Styling */
+img {
+    height: 20px;
+    width: auto;
 }

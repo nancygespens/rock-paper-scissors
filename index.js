@@ -1,40 +1,45 @@
-let resultDisplay = document.getElementById("resultDisplay");
-let movesLeftDisplay = document.getElementById("movesLeft");
-let playerScoreDisplay = document.getElementById("playerScore");
-let computerScoreDisplay = document.getElementById("computerScore");
+// Select DOM elements
+const resultDisplay = document.getElementById("resultDisplay");
+const movesLeftDisplay = document.getElementById("remainingMoves");
+const playerScoreDisplay = document.getElementById("playerScore");
+const computerScoreDisplay = document.getElementById("computerScore");
 
-let movesLeft = 5;
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+const newGameButton = document.getElementById("newGameButton");
+
+// Game state variables
+let remainingMoves = 5;
 let playerScore = 0;
 let computerScore = 0;
 
-let rockButton = document.getElementById("rock");
-let paperButton = document.getElementById("paper");
-let scissorsButton = document.getElementById("scissors");
-let newGameButton = document.getElementById("newGameButton");
-
-// Function to start the round
+// Play a round
 function playRound(playerChoice) {
-    if (movesLeft > 0) {
-        let computerChoice = getComputerChoice();
-        let roundResult = determineWinner(playerChoice, computerChoice);
-        
+    if (remainingMoves > 0) {
+        const computerChoice = getComputerChoice();
+        const roundResult = determineWinner(playerChoice, computerChoice);
+
         resultDisplay.textContent = roundResult;
+        resultDisplay.className = ""; // Reset result styling
+        resultDisplay.classList.add(getResultClass(roundResult));
+        
         updateScores();
         updateMovesLeft();
-        
-        if (movesLeft === 0) {
+
+        if (remainingMoves === 0) {
             endGame();
         }
     }
 }
 
-// Function to get random computer choice
+// Random computer choice
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
     return choices[Math.floor(Math.random() * 3)];
 }
 
-// Function to determine round winner
+// Determine winner
 function determineWinner(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
         return "It's a tie!";
@@ -51,45 +56,52 @@ function determineWinner(playerChoice, computerChoice) {
     }
 }
 
-// Function to update score and moves left
+// Get result class for styling
+function getResultClass(result) {
+    if (result === "You win this round!") return "win";
+    if (result === "It's a tie!") return "tie";
+    if (result === "Computer wins this round!") return "lose"; // Specific class for computer win
+    return "";
+}
+
+// Update scores
 function updateScores() {
     playerScoreDisplay.textContent = playerScore;
     computerScoreDisplay.textContent = computerScore;
 }
 
-// Function to update moves left
+// Update remaining moves
 function updateMovesLeft() {
-    movesLeft--;
-    movesLeftDisplay.textContent = movesLeft;
+    remainingMoves--;
+    movesLeftDisplay.textContent = remainingMoves;
 }
 
-// Function to end the game and show the final result
+// End game
 function endGame() {
     if (playerScore > computerScore) {
         resultDisplay.textContent = "You won the game!";
-        resultDisplay.style.color = "#606c38";  
+        resultDisplay.classList.add("win");
     } else if (computerScore > playerScore) {
         resultDisplay.textContent = "Computer won the game!";
-        resultDisplay.style.color = "#c1121f";  
+        resultDisplay.classList.add("lose");
     } else {
         resultDisplay.textContent = "It's a tie!";
-        resultDisplay.style.color = '#778da9';  
+        resultDisplay.classList.add("tie");
     }
 }
 
-// Function to reset the game
+// Reset game
 function resetGame() {
-    movesLeft = 5;
+    remainingMoves = 5;
     playerScore = 0;
     computerScore = 0;
     resultDisplay.textContent = "Result will appear here";
-    resultDisplay.style.color = '#778da9';
+    resultDisplay.className = "tie";
     updateScores();
-    movesLeftDisplay.textContent = movesLeft;
+    movesLeftDisplay.textContent = remainingMoves;
 }
 
-
-// Add event listeners to buttons
+// Add event listeners
 rockButton.addEventListener("click", () => playRound("rock"));
 paperButton.addEventListener("click", () => playRound("paper"));
 scissorsButton.addEventListener("click", () => playRound("scissors"));
